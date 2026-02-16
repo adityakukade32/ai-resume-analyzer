@@ -6,11 +6,12 @@ export const meta = () => ([
     { title: "Resumind | Auth" },
     { name: 'description', content: "Log into your account" }
 ])
-const auth = () => {
+const Auth = () => {
     const { isLoading, auth } = usePuterStore();
     const location = useLocation();
     const navigate = useNavigate();
-    const next = location.search.split('next')[1];
+    const searchParams = new URLSearchParams(location.search);
+    const next = searchParams.get('next') || '/';
 
 
     useEffect(() => {
@@ -50,4 +51,4 @@ const auth = () => {
     )
 }
 
-export default auth
+export default Auth
